@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
+
 import {
   Layers,
   MessageSquare,
@@ -389,6 +390,7 @@ export default function ServicesModules() {
                 </div>
 
                 {/* Corner accent */}
+
                 <div
                   className={`absolute top-0 left-0 w-20 h-20 bg-gradient-to-br ${activeCategoryData?.color} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500`}
                 ></div>
