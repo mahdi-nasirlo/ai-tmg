@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { ChevronLeft, Sparkles } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { ChevronLeft, Sparkles } from "lucide-react";
 
 export default function Hero() {
-  const [typedText, setTypedText] = useState('');
-  const fullText = 'هوش مصنوعی در خدمت تحول دیجیتال سازمان‌ها';
+  const [typedText, setTypedText] = useState("");
+  const fullText = "هوش مصنوعی در خدمت تحول دیجیتال سازمان‌ها";
 
   useEffect(() => {
     let currentIndex = 0;
@@ -20,11 +20,17 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900"
+    >
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div
+          className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl animate-pulse"
+          style={{ animationDelay: "1s" }}
+        ></div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10 py-32">
@@ -32,7 +38,9 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8 animate-fade-in border border-white/20">
             <Sparkles className="w-4 h-4 text-yellow-400" />
-            <span className="text-white text-sm font-medium">پیشرفته‌ترین سرویس‌های هوش مصنوعی</span>
+            <span className="text-white text-sm font-medium">
+              سرویس‌های هوش مصنوعی
+            </span>
           </div>
 
           {/* Headline with Typing Effect */}
@@ -42,8 +50,11 @@ export default function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-white/90 mb-12 leading-relaxed max-w-4xl mx-auto animate-slide-up stagger-2">
-            شرکت داده‌پردازان بنیان آوا با بیش از یک دهه تجربه در طراحی و توسعه سامانه‌های ملی، اکنون با ارائه سرویس‌های هوش مصنوعی پیشرفته شامل تبدیل گفتار به متن، دستیار هوشمند، تشخیص چهره، تشخیص پلاک خودرو و پشتیبانی هوشمند، همراه مطمئن سازمان‌ها در مسیر آینده دیجیتال است.
+          <p className="text-lg md:text-xl text-white/90 mb-12 leading-relaxed max-w-4xl mx-auto animate-slide-up stagger-2 text-pretty">
+            شرکت داده‌پردازان بنیان آوا با بیش از یک دهه تجربه در طراحی و توسعه
+            سامانه‌های ملی، اکنون با ارائه سرویس‌های هوش مصنوعی پیشرفته شامل
+            تبدیل گفتار به متن، دستیار هوشمند، تشخیص چهره، تشخیص پلاک خودرو و
+            پشتیبانی هوشمند، همراه مطمئن سازمان‌ها در مسیر آینده دیجیتال است.
           </p>
 
           {/* CTA Buttons */}
@@ -66,13 +77,15 @@ export default function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 animate-fade-in stagger-4">
             {[
-              { label: 'سال تجربه', value: '+10' },
-              { label: 'پروژه ملی', value: '+100' },
-              { label: 'کارشناس متخصص', value: '+500' },
-              { label: 'رضایت مشتریان', value: '%95' }
+              { label: "سال تجربه", value: "+10" },
+              { label: "پروژه ملی", value: "+100" },
+              { label: "کارشناس متخصص", value: "+500" },
+              { label: "رضایت مشتریان", value: "%95" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2 neon-text">{stat.value}</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2 neon-text">
+                  {stat.value}
+                </div>
                 <div className="text-white/70 text-sm">{stat.label}</div>
               </div>
             ))}

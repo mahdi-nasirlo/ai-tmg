@@ -1,24 +1,28 @@
-import { useState } from 'react';
-import { Mic, FileText, Bot, Play, Pause } from 'lucide-react';
+import { useState } from "react";
+import { Mic, FileText, Bot, Play, Pause } from "lucide-react";
 
 export default function SpeechToText() {
   const [isRecording, setIsRecording] = useState(false);
-  const [transcription, setTranscription] = useState('');
-  const [aiResponse, setAiResponse] = useState('');
+  const [transcription, setTranscription] = useState("");
+  const [aiResponse, setAiResponse] = useState("");
 
   const handleRecording = () => {
     setIsRecording(!isRecording);
 
     if (!isRecording) {
       setTimeout(() => {
-        setTranscription('سلام، می‌خواستم در مورد سرویس‌های هوش مصنوعی شما اطلاعات بیشتری کسب کنم. آیا امکان ارائه مشاوره رایگان وجود دارد؟');
+        setTranscription(
+          "سلام، می‌خواستم در مورد سرویس‌های هوش مصنوعی شما اطلاعات بیشتری کسب کنم. آیا امکان ارائه مشاوره رایگان وجود دارد؟"
+        );
         setTimeout(() => {
-          setAiResponse('سلام و درود. بله، ما مشاوره رایگان ارائه می‌دهیم. تیم ما آماده است تا نیازهای شما را بررسی کرده و بهترین راهکار را پیشنهاد دهد. لطفاً اطلاعات تماس خود را در فرم درخواست مشاوره ثبت کنید تا همکاران ما در اسرع وقت با شما تماس بگیرند.');
+          setAiResponse(
+            "سلام و درود. بله، ما مشاوره رایگان ارائه می‌دهیم. تیم ما آماده است تا نیازهای شما را بررسی کرده و بهترین راهکار را پیشنهاد دهد. لطفاً اطلاعات تماس خود را در فرم درخواست مشاوره ثبت کنید تا همکاران ما در اسرع وقت با شما تماس بگیرند."
+          );
         }, 1500);
       }, 2000);
     } else {
-      setTranscription('');
-      setAiResponse('');
+      setTranscription("");
+      setAiResponse("");
     }
   };
 
@@ -28,7 +32,9 @@ export default function SpeechToText() {
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-full mb-4 shadow-lg">
           <Mic className="w-5 h-5" />
-          <span className="font-semibold">تبدیل گفتار به متن و دستیار هوشمند</span>
+          <span className="font-semibold">
+            تبدیل گفتار به متن و دستیار هوشمند
+          </span>
         </div>
         <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           پردازش گفتار با هوش مصنوعی
@@ -47,18 +53,18 @@ export default function SpeechToText() {
               onClick={handleRecording}
               className={`relative inline-flex items-center justify-center w-20 h-20 rounded-full transition-all duration-300 ${
                 isRecording
-                  ? 'bg-red-500 shadow-lg shadow-red-500/50 animate-pulse'
-                  : 'bg-gradient-to-r from-green-500 to-emerald-600 shadow-lg hover:shadow-xl card-hover'
+                  ? "bg-red-500 shadow-lg shadow-red-500/50 animate-pulse"
+                  : "bg-gradient-to-r from-green-500 to-emerald-600 shadow-lg hover:shadow-xl card-hover"
               }`}
             >
               {isRecording ? (
                 <Pause className="w-8 h-8 text-white" />
               ) : (
-                <Play className="w-8 h-8 text-white mr-1" />
+                <Play className="w-8 h-8 text-white" />
               )}
             </button>
             <p className="text-gray-600 mt-4 font-medium">
-              {isRecording ? 'در حال ضبط...' : 'کلیک کنید تا ضبط شروع شود'}
+              {isRecording ? "در حال ضبط..." : "کلیک کنید تا ضبط شروع شود"}
             </p>
           </div>
 
@@ -79,7 +85,9 @@ export default function SpeechToText() {
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 shadow-lg border border-green-200 animate-slide-up">
                   <div className="flex items-center gap-2 mb-3">
                     <Bot className="w-5 h-5 text-green-600" />
-                    <h4 className="font-bold text-gray-900">پاسخ دستیار هوشمند:</h4>
+                    <h4 className="font-bold text-gray-900">
+                      پاسخ دستیار هوشمند:
+                    </h4>
                   </div>
                   <p className="text-gray-700 leading-relaxed">{aiResponse}</p>
                 </div>
@@ -90,11 +98,15 @@ export default function SpeechToText() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-gray-200">
             {[
-              { label: 'دقت', value: '%97' },
-              { label: 'سرعت پردازش', value: '< 1 ثانیه' },
-              { label: 'زبان‌های پشتیبانی شده', value: '۵+' }
+              { label: "دقت", value: "%97" },
+              { label: "سرعت پردازش", value: "< 1 ثانیه" },
+              { label: "زبان‌های پشتیبانی شده", value: "۵+" },
             ].map((stat, index) => (
-              <div key={index} className="text-center animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div
+                key={index}
+                className="text-center animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 mb-1">
                   {stat.value}
                 </div>

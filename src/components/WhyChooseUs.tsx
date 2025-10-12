@@ -1,37 +1,44 @@
-import { Award, Clock, Shield, Users, TrendingUp, Database } from 'lucide-react';
+import {
+  Award,
+  Clock,
+  Shield,
+  Users,
+  TrendingUp,
+  Database,
+} from "lucide-react";
 
 export default function WhyChooseUs() {
   const features = [
     {
       icon: Award,
-      title: 'بیش از یک دهه تجربه در اجرای پروژه‌های ملی',
-      color: 'from-blue-500 to-cyan-500'
+      title: "بیش از یک دهه تجربه در اجرای پروژه‌های ملی",
+      color: "from-blue-500 to-cyan-500",
     },
     {
       icon: TrendingUp,
-      title: 'دارنده رتبه ۱ شورای عالی انفورماتیک',
-      color: 'from-purple-500 to-pink-500'
+      title: "دارنده رتبه ۱ شورای عالی انفورماتیک",
+      color: "from-purple-500 to-pink-500",
     },
     {
       icon: Clock,
-      title: 'ارائه خدمات بدون وقفه و پشتیبانی مداوم',
-      color: 'from-green-500 to-emerald-500'
+      title: "ارائه خدمات بدون وقفه و پشتیبانی مداوم",
+      color: "from-green-500 to-emerald-500",
     },
     {
       icon: Users,
-      title: 'تیم متخصص با بیش از ۵۰۰ نفر نیروی فنی مجرب',
-      color: 'from-orange-500 to-red-500'
+      title: "تیم متخصص با بیش از ۵۰۰ نفر نیروی فنی مجرب",
+      color: "from-orange-500 to-red-500",
     },
     {
       icon: Shield,
-      title: 'رعایت کامل محرمانگی و امنیت اطلاعات مشتریان',
-      color: 'from-indigo-500 to-blue-500'
+      title: "رعایت کامل محرمانگی و امنیت اطلاعات مشتریان",
+      color: "from-indigo-500 to-blue-500",
     },
     {
       icon: Database,
-      title: 'تحلیل و طراحی بیش از ۸۰ سامانه ملی',
-      color: 'from-teal-500 to-green-500'
-    }
+      title: "تحلیل و طراحی بیش از ۸۰ سامانه ملی",
+      color: "from-teal-500 to-green-500",
+    },
   ];
 
   return (
@@ -44,7 +51,8 @@ export default function WhyChooseUs() {
               چرا داده پردازان بنیان آوا؟
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              با اعتماد بیش از صدها سازمان دولتی و خصوصی، ما را به عنوان شریک مطمئن خود در مسیر تحول دیجیتال انتخاب کنید
+              با اعتماد بیش از صدها سازمان دولتی و خصوصی، ما را به عنوان شریک
+              مطمئن خود در مسیر تحول دیجیتال انتخاب کنید
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full mt-6"></div>
           </div>
@@ -58,7 +66,9 @@ export default function WhyChooseUs() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Icon Container */}
-                <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${feature.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div
+                  className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${feature.color} mb-6 group-hover:scale-110 transition-transform duration-300`}
+                >
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
 
@@ -77,10 +87,11 @@ export default function WhyChooseUs() {
           <div className="mt-16 text-center animate-fade-in">
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 md:p-12">
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                آماده شروع پروژه جدید هستید؟
+                نیاز به دمو یا سرویس دارید؟
               </h3>
               <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                تیم متخصصان ما آماده است تا بهترین راهکارهای فناوری را برای سازمان شما ارائه دهد
+                با درخواست دمو، دسترسی رایگان به سرویس‌های پیشرفته ما را دریافت
+                کنید و قابلیت‌های آن‌ها را به صورت کامل تست و بررسی نمایید.
               </p>
               <a
                 href="#contact"
