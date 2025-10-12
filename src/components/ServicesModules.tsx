@@ -310,46 +310,63 @@ export default function ServicesModules() {
               <a
                 key={service.id}
                 href={service.link}
-                className="group bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100 hover:border-transparent transition-all duration-300 card-hover animate-slide-up"
+                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden animate-slide-up"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                {/* Icon Container */}
-                <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${activeCategoryData?.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className="w-8 h-8 text-white" />
+                {/* Neon glow background on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${activeCategoryData?.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+
+                {/* Animated border glow */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${activeCategoryData?.color} blur-xl opacity-60`}></div>
                 </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  {service.description}
-                </p>
-
-                {/* Tags */}
-                {service.tags && (
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {service.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded-full group-hover:bg-gradient-to-r group-hover:from-blue-100 group-hover:to-purple-100 group-hover:text-blue-700 transition-all"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                {/* Content wrapper */}
+                <div className="relative z-10">
+                  {/* Icon Container */}
+                  <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${activeCategoryData?.color} mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg group-hover:shadow-2xl`}>
+                    <service.icon className="w-8 h-8 text-white" />
                   </div>
-                )}
 
-                {/* View More Link */}
-                <div className="flex items-center gap-2 text-sm font-semibold text-gray-500 group-hover:text-blue-600 transition-colors">
-                  <span>مشاهده جزئیات</span>
-                  <ChevronLeft className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  {/* Title with neon effect */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4 group-hover:text-gray-700 transition-colors">
+                    {service.description}
+                  </p>
+
+                  {/* Tags with neon effect */}
+                  {service.tags && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {service.tags.map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className={`text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded-full transition-all duration-300 group-hover:bg-gradient-to-r group-hover:${activeCategoryData?.color} group-hover:text-white group-hover:shadow-lg`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* View More Link with arrow animation */}
+                  <div className={`flex items-center gap-2 text-sm font-semibold text-gray-500 transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${activeCategoryData?.color}`}>
+                    <span>مشاهده جزئیات</span>
+                    <ChevronLeft className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+                  </div>
                 </div>
 
-                {/* Hover Border Effect */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${activeCategoryData?.color} opacity-0 group-hover:opacity-100 transition-opacity -z-10 blur-xl`}></div>
+                {/* Corner accent */}
+                <div className={`absolute top-0 left-0 w-20 h-20 bg-gradient-to-br ${activeCategoryData?.color} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500`}></div>
+                <div className={`absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl ${activeCategoryData?.color} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500`}></div>
+
+                {/* Scan line effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent translate-y-[-100%] group-hover:translate-y-[100%] transition-transform duration-1000"></div>
+                </div>
               </a>
             ))}
           </div>
