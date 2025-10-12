@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
 import WhyChooseUs from './components/WhyChooseUs';
 import Certifications from './components/Certifications';
+import ServicesModules from './components/ServicesModules';
 import AIServices from './components/AIServices';
 import Footer from './components/Footer';
 
@@ -21,6 +22,7 @@ function App() {
       <AboutUs />
       <WhyChooseUs />
       <Certifications />
+      <ServicesModules />
       <AIServices />
       <Footer />
     </div>
