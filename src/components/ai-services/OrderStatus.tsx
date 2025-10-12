@@ -1,32 +1,48 @@
-import { useState } from 'react';
-import { Package, Clock, CheckCircle, AlertCircle, Search } from 'lucide-react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from "react";
+import { Package, Clock, CheckCircle, AlertCircle, Search } from "lucide-react";
 
 export default function OrderStatus() {
-  const [orderId, setOrderId] = useState('');
-  const [orderData, setOrderData] = useState<any>(null);
-  const [isSearching, setIsSearching] = useState(false);
+  const [orderId, setOrderId] = useState("ORD-2024-12345");
 
-  const handleSearch = () => {
-    if (!orderId) return;
-
-    setIsSearching(true);
-    setTimeout(() => {
-      setOrderData({
-        id: orderId,
-        status: 'در حال پردازش',
-        estimatedTime: '۲ روز',
-        problem: 'فرایند ثبت نام در سامانه دولتی',
-        progress: 65,
-        updates: [
-          { time: '۱۰:۳۰', status: 'درخواست ثبت شد', completed: true },
-          { time: '۱۱:۱۵', status: 'در حال بررسی', completed: true },
-          { time: '۱۴:۲۰', status: 'در حال پردازش', completed: false },
-          { time: 'منتظر', status: 'تکمیل', completed: false }
-        ]
-      });
-      setIsSearching(false);
-    }, 1500);
+  const orderData = {
+    id: orderId,
+    status: "در حال پردازش",
+    estimatedTime: "۲ روز",
+    problem: "فرایند ثبت نام در سامانه دولتی",
+    progress: 65,
+    updates: [
+      { time: "۱۰:۳۰", status: "درخواست ثبت شد", completed: true },
+      { time: "۱۱:۱۵", status: "در حال بررسی", completed: true },
+      { time: "۱۴:۲۰", status: "در حال پردازش", completed: false },
+      { time: "منتظر", status: "تکمیل", completed: false },
+    ],
   };
+
+  // const [orderData, setOrderData] = useState<any>(null);
+  // const [isSearching, setIsSearching] = useState(false);
+
+  // const handleSearch = () => {
+  //   if (!orderId) return;
+
+  //   setIsSearching(true);
+  //   setTimeout(() => {
+  //     setOrderData({
+  //       id: orderId,
+  //       status: "در حال پردازش",
+  //       estimatedTime: "۲ روز",
+  //       problem: "فرایند ثبت نام در سامانه دولتی",
+  //       progress: 65,
+  //       updates: [
+  //         { time: "۱۰:۳۰", status: "درخواست ثبت شد", completed: true },
+  //         { time: "۱۱:۱۵", status: "در حال بررسی", completed: true },
+  //         { time: "۱۴:۲۰", status: "در حال پردازش", completed: false },
+  //         { time: "منتظر", status: "تکمیل", completed: false },
+  //       ],
+  //     });
+  //     setIsSearching(false);
+  //   }, 1500);
+  // };
 
   return (
     <div className="animate-slide-up">
@@ -40,7 +56,8 @@ export default function OrderStatus() {
           پیگیری هوشمند درخواست‌ها
         </h3>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          سیستم پیگیری خودکار برای مدیریت و نظارت بر وضعیت سفارش‌ها و درخواست‌های شما
+          سیستم پیگیری خودکار برای مدیریت و نظارت بر وضعیت سفارش‌ها و
+          درخواست‌های شما
         </p>
       </div>
 
@@ -49,22 +66,26 @@ export default function OrderStatus() {
         <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-2xl border border-gray-200">
           {/* Search Box */}
           <div className="mb-8">
-            <label className="block text-gray-700 font-semibold mb-3">کد پیگیری سفارش:</label>
+            <label className="block text-gray-700 font-semibold mb-3">
+              کد پیگیری سفارش:
+            </label>
             <div className="flex gap-3">
               <input
                 type="text"
                 value={orderId}
+                disabled={true}
                 onChange={(e) => setOrderId(e.target.value)}
                 placeholder="مثال: ORD-2024-12345"
                 className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               />
               <button
-                onClick={handleSearch}
-                disabled={isSearching || !orderId}
+                // onClick={handleSearch}
+                disabled={true}
                 className="btn-neon bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-3 rounded-xl font-semibold disabled:opacity-50 flex items-center gap-2"
               >
                 <Search className="w-5 h-5" />
-                {isSearching ? 'در حال جستجو...' : 'جستجو'}
+                جستجو
+                {/* {isSearching ? "در حال جستجو..." : "جستجو"} */}
               </button>
             </div>
           </div>
@@ -80,21 +101,27 @@ export default function OrderStatus() {
                       <Package className="w-4 h-4" />
                       وضعیت سفارش
                     </div>
-                    <div className="text-xl font-bold text-gray-900">{orderData.status}</div>
+                    <div className="text-xl font-bold text-gray-900">
+                      {orderData.status}
+                    </div>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 text-gray-600 text-sm mb-2">
                       <Clock className="w-4 h-4" />
                       زمان تخمینی
                     </div>
-                    <div className="text-xl font-bold text-orange-600">{orderData.estimatedTime}</div>
+                    <div className="text-xl font-bold text-orange-600">
+                      {orderData.estimatedTime}
+                    </div>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 text-gray-600 text-sm mb-2">
                       <AlertCircle className="w-4 h-4" />
                       جزئیات مشکل
                     </div>
-                    <div className="text-sm font-semibold text-gray-900">{orderData.problem}</div>
+                    <div className="text-sm font-semibold text-gray-900">
+                      {orderData.problem}
+                    </div>
                   </div>
                 </div>
 
@@ -115,28 +142,38 @@ export default function OrderStatus() {
 
               {/* Timeline */}
               <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <h4 className="font-bold text-gray-900 mb-6">تاریخچه بروزرسانی‌ها</h4>
+                <h4 className="font-bold text-gray-900 mb-6">
+                  تاریخچه بروزرسانی‌ها
+                </h4>
                 <div className="space-y-4">
                   {orderData.updates.map((update: any, index: number) => (
                     <div key={index} className="flex items-center gap-4">
-                      <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
-                        update.completed
-                          ? 'bg-green-100'
-                          : index === 2
-                          ? 'bg-orange-100 animate-pulse'
-                          : 'bg-gray-100'
-                      }`}>
-                        <CheckCircle className={`w-5 h-5 ${
+                      <div
+                        className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
                           update.completed
-                            ? 'text-green-600'
+                            ? "bg-green-100"
                             : index === 2
-                            ? 'text-orange-600'
-                            : 'text-gray-400'
-                        }`} />
+                            ? "bg-orange-100 animate-pulse"
+                            : "bg-gray-100"
+                        }`}
+                      >
+                        <CheckCircle
+                          className={`w-5 h-5 ${
+                            update.completed
+                              ? "text-green-600"
+                              : index === 2
+                              ? "text-orange-600"
+                              : "text-gray-400"
+                          }`}
+                        />
                       </div>
                       <div className="flex-1">
-                        <div className="font-semibold text-gray-900">{update.status}</div>
-                        <div className="text-sm text-gray-500">{update.time}</div>
+                        <div className="font-semibold text-gray-900">
+                          {update.status}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {update.time}
+                        </div>
                       </div>
                     </div>
                   ))}

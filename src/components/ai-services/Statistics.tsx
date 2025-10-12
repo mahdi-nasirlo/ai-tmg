@@ -1,5 +1,12 @@
-import { useState, useEffect } from 'react';
-import { BarChart3, TrendingUp, Users, CheckCircle, Star, ThumbsUp } from 'lucide-react';
+import { useState, useEffect } from "react";
+import {
+  BarChart3,
+  TrendingUp,
+  Users,
+  CheckCircle,
+  Star,
+  ThumbsUp,
+} from "lucide-react";
 
 export default function Statistics() {
   const [satisfaction, setSatisfaction] = useState(0);
@@ -23,35 +30,35 @@ export default function Statistics() {
   const stats = [
     {
       icon: Users,
-      value: '+۱۰۰,۰۰۰',
-      label: 'کاربر فعال',
-      color: 'from-blue-500 to-cyan-500'
+      value: "+۱۰۰,۰۰۰",
+      label: "کاربر فعال",
+      color: "from-blue-500 to-cyan-500",
     },
     {
       icon: CheckCircle,
-      value: '+۵۰۰,۰۰۰',
-      label: 'درخواست پردازش شده',
-      color: 'from-green-500 to-emerald-500'
+      value: "+۵۰۰,۰۰۰",
+      label: "درخواست پردازش شده",
+      color: "from-green-500 to-emerald-500",
     },
     {
       icon: TrendingUp,
-      value: '%۳۵',
-      label: 'کاهش زمان پاسخگویی',
-      color: 'from-purple-500 to-pink-500'
+      value: "%۳۵",
+      label: "کاهش زمان پاسخگویی",
+      color: "from-purple-500 to-pink-500",
     },
     {
       icon: Star,
-      value: '۴.۸/۵',
-      label: 'امتیاز رضایت مندی',
-      color: 'from-yellow-500 to-orange-500'
-    }
+      value: "۴.۸/۵",
+      label: "امتیاز رضایت مندی",
+      color: "from-yellow-500 to-orange-500",
+    },
   ];
 
   const features = [
-    { icon: '🎯', title: 'دقت بالا', value: '%۹۸' },
-    { icon: '⚡', title: 'سرعت پردازش', value: '< ۱s' },
-    { icon: '🔒', title: 'امنیت', value: '۱۰۰%' },
-    { icon: '📱', title: 'دسترسی ۲۴/۷', value: 'فعال' }
+    { icon: "🎯", title: "دقت بالا", value: "%۹۸" },
+    { icon: "⚡", title: "سرعت پردازش", value: "< ۱s" },
+    { icon: "🔒", title: "امنیت", value: "۱۰۰%" },
+    { icon: "📱", title: "دسترسی ۲۴/۷", value: "فعال" },
   ];
 
   return (
@@ -96,10 +103,14 @@ export default function Statistics() {
             className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 card-hover animate-slide-up"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
-            <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${stat.color} mb-4`}>
+            <div
+              className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${stat.color} mb-4`}
+            >
               <stat.icon className="w-6 h-6 text-white" />
             </div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
+            <div className="text-3xl font-bold text-gray-900 mb-2">
+              {stat.value}
+            </div>
             <div className="text-gray-600 text-sm">{stat.label}</div>
           </div>
         ))}
@@ -119,7 +130,9 @@ export default function Statistics() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="text-4xl mb-3">{feature.icon}</div>
-                <div className="font-semibold text-gray-900 mb-2">{feature.title}</div>
+                <div className="font-semibold text-gray-900 mb-2">
+                  {feature.title}
+                </div>
                 <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                   {feature.value}
                 </div>
