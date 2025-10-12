@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import AboutUs from "./components/AboutUs";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Certifications from "./components/Certifications";
+import ServicesModules from "./components/ServicesModules";
 import AIServices from "./components/AIServices";
 import Footer from "./components/Footer";
-import ServicesModules from "./components/ServicesModules";
 
-function App() {
+export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -32,5 +32,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

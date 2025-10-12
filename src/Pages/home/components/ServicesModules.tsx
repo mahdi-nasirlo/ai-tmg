@@ -23,6 +23,7 @@ import {
   ChevronLeft,
   Sparkles,
 } from "lucide-react";
+import { NavLink } from "react-router";
 
 interface Service {
   id: string;
@@ -353,9 +354,11 @@ export default function ServicesModules() {
                   </div>
 
                   {/* Title with neon effect */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-3  group-hover:bg-clip-text transition-all duration-300">
-                    {service.title}
-                  </h3>
+                  <NavLink to="/service/test">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3  group-hover:bg-clip-text transition-all duration-300">
+                      {service.title}
+                    </h3>
+                  </NavLink>
 
                   {/* Description */}
                   <p className="min-h-12 text-gray-600 text-sm leading-relaxed mb-4 group-hover:text-gray-700 transition-colors">

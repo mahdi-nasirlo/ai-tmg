@@ -14,6 +14,7 @@ import {
   Copy,
   Check,
 } from "lucide-react";
+import { NavLink } from "react-router";
 
 // interface CodeExample {
 //   title: string;
@@ -206,13 +207,13 @@ engine.on('workflow:completed', (data) => {
       {/* Header */}
       <div className="border-b border-white/10 bg-black/20 backdrop-blur-sm">
         <div className="container mx-auto px-4 lg:px-8 py-6">
-          <a
-            href="#"
+          <NavLink
+            to="/"
             className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors group mb-4"
           >
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             بازگشت به لیست سرویس‌ها
-          </a>
+          </NavLink>
 
           <div className="flex items-start justify-between flex-wrap gap-4">
             <div>
