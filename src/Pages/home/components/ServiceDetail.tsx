@@ -21,7 +21,6 @@ export default function ServiceDetail() {
   >("overview");
   const [copiedCode, setCopiedCode] = useState<number | null>(null);
 
-  // Sample service data - این داده‌ها باید از routing یا API دریافت شوند
   const serviceData = {
     title: "ماژول ورک‌فلو",
     category: "ماژول‌های عمومی",

@@ -25,6 +25,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { NavLink } from "react-router";
+import { services } from "../../../services/service.service";
 
 interface Service {
   id: string;
@@ -269,7 +270,8 @@ export default function ServicesModules() {
   ];
 
   const activeServices =
-    categories.find((cat) => cat.id === activeCategory)?.services || [];
+    services.filter((cat) => cat.categorySlug === activeCategory) || [];
+
   const activeCategoryData = categories.find(
     (cat) => cat.id === activeCategory
   );
@@ -318,7 +320,7 @@ export default function ServicesModules() {
                       : "bg-gray-100"
                   }`}
                 >
-                  {category.services.length}
+                  {services.filter((i) => i.categorySlug == category.id).length}
                 </span>
               </button>
             ))}
@@ -328,8 +330,7 @@ export default function ServicesModules() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {activeServices.map((service, index) => (
               <a
-                key={service.id}
-                href={service.link}
+                href={`/services/${service.categorySlug}`}
                 className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden animate-slide-up"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
