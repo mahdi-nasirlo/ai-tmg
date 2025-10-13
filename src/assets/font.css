@@ -1,8 +1,9 @@
 /* IRANSans FaNum - Thin (100) */
 @font-face {
   font-family: "IRANSansFaNum";
-  src: url("../iransansfanum/woff2/IRANSansWeb(FaNum).woff2") format("woff2"),
-    url("../iransansfanum/woff/IRANSansWeb(FaNum).woff") format("woff");
+  src: url("../fonts/iransansfanum/woff2/IRANSansWeb(FaNum).woff2")
+      format("woff2"),
+    url("../fonts/iransansfanum/woff/IRANSansWeb(FaNum).woff") format("woff");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -11,9 +12,9 @@
 /* IRANSans FaNum - UltraLight (200) */
 @font-face {
   font-family: "IRANSansFaNum";
-  src: url("../iransansfanum/woff2/IRANSansWeb(FaNum)_UltraLight.woff2")
+  src: url("../fonts/iransansfanum/woff2/IRANSansWeb(FaNum)_UltraLight.woff2")
       format("woff2"),
-    url("../iransansfanum/woff/IRANSansWeb(FaNum)_UltraLight.woff")
+    url("../fonts/iransansfanum/woff/IRANSansWeb(FaNum)_UltraLight.woff")
       format("woff");
   font-weight: 200;
   font-style: normal;
@@ -23,9 +24,10 @@
 /* IRANSans FaNum - Light (300) */
 @font-face {
   font-family: "IRANSansFaNum";
-  src: url("../iransansfanum/woff2/IRANSansWeb(FaNum)_Light.woff2")
+  src: url("../fonts/iransansfanum/woff2/IRANSansWeb(FaNum)_Light.woff2")
       format("woff2"),
-    url("../iransansfanum/woff/IRANSansWeb(FaNum)_Light.woff") format("woff");
+    url("../fonts/iransansfanum/woff/IRANSansWeb(FaNum)_Light.woff")
+      format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -34,9 +36,10 @@
 /* IRANSans FaNum - Medium (500) */
 @font-face {
   font-family: "IRANSansFaNum";
-  src: url("../iransansfanum/woff2/IRANSansWeb(FaNum)_Medium.woff2")
+  src: url("../fonts/iransansfanum/woff2/IRANSansWeb(FaNum)_Medium.woff2")
       format("woff2"),
-    url("../iransansfanum/woff/IRANSansWeb(FaNum)_Medium.woff") format("woff");
+    url("../fonts/iransansfanum/woff/IRANSansWeb(FaNum)_Medium.woff")
+      format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -45,9 +48,10 @@
 /* IRANSans FaNum - Bold (600) */
 @font-face {
   font-family: "IRANSansFaNum";
-  src: url("../iransansfanum/woff2/IRANSansWeb(FaNum)_Bold.woff2")
+  src: url("../fonts/iransansfanum/woff2/IRANSansWeb(FaNum)_Bold.woff2")
       format("woff2"),
-    url("../iransansfanum/woff/IRANSansWeb(FaNum)_Bold.woff") format("woff");
+    url("../fonts/iransansfanum/woff/IRANSansWeb(FaNum)_Bold.woff")
+      format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -56,9 +60,10 @@
 /* IRANSans FaNum - Black (800) */
 @font-face {
   font-family: "IRANSansFaNum";
-  src: url("../iransansfanum/woff2/IRANSansWeb(FaNum)_Black.woff2")
+  src: url("../fonts/iransansfanum/woff2/IRANSansWeb(FaNum)_Black.woff2")
       format("woff2"),
-    url("../iransansfanum/woff/IRANSansWeb(FaNum)_Black.woff") format("woff");
+    url("../fonts/iransansfanum/woff/IRANSansWeb(FaNum)_Black.woff")
+      format("woff");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
