@@ -1,4 +1,3 @@
-import { ApiServiceService } from "@/constance/types/contentTypes";
 import type { Schema, Struct } from "@strapi/strapi";
 
 export interface AdminApiToken extends Struct.CollectionTypeSchema {
@@ -442,6 +441,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.String["type"];
     createdAt: Schema.Attribute.DateTime["type"];
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user">["type"];
     icon: Schema.Attribute.Enumeration<

@@ -293,8 +293,8 @@ export default function ServicesModules() {
     },
   ];
 
-  // const activeServices =
-  //   services.filter((cat) => cat.categorySlug === activeCategory) || [];
+  const activeServices =
+    data?.filter((cat) => cat.category === activeCategory) || [];
 
   const activeCategoryData = categories.find(
     (cat) => cat.id === activeCategory
@@ -344,7 +344,7 @@ export default function ServicesModules() {
                       : "bg-gray-100"
                   }`}
                 >
-                  {/* {services.filter((i) => i.categorySlug == category.id).length} */}
+                  {data?.filter((i) => i.category == category.id).length}
                 </span>
               </button>
             ))}
@@ -352,7 +352,7 @@ export default function ServicesModules() {
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data?.map((service, index) => {
+            {activeServices?.map((service, index) => {
               const Icon = icons[service.icon as IconName];
 
               return (
