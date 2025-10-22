@@ -445,6 +445,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     category: Schema.Attribute.String["type"];
     createdAt: Schema.Attribute.DateTime["type"];
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user">["type"];
+    documentId: Schema.Attribute.String["type"];
     icon: Schema.Attribute.Enumeration<
       [
         "Workflow",

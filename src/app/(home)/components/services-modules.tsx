@@ -382,7 +382,7 @@ export default function ServicesModules() {
                     </div>
 
                     {/* Title with neon effect */}
-                    <Link href="/service/test">
+                    <Link href={`/service/${service.documentId}`}>
                       <h3 className="text-xl font-bold text-gray-900 mb-3  group-hover:bg-clip-text transition-all duration-300">
                         {service.title}
                       </h3>
