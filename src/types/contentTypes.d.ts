@@ -1,5 +1,10 @@
 import type { Schema, Struct } from "@strapi/strapi";
-import { ArrayTags } from "./components";
+import {
+  ArrayApiEndpoints,
+  ArrayDocs,
+  ArrayFeatures,
+  ArrayTags,
+} from "./components";
 
 export interface AdminApiToken extends Struct.CollectionTypeSchema {
   collectionName: "strapi_api_tokens";
@@ -443,8 +448,15 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
   };
   attributes: {
     category: Schema.Attribute.String["type"];
+    api_endpoints: ArrayApiEndpoints["attributes"][];
+    persian_category: Schema.Attribute.String["type"];
     createdAt: Schema.Attribute.DateTime["type"];
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user">["type"];
+    docs: ArrayDocs["attributes"][];
+    document: { url: string };
+    document_content: Schema.Attribute.Blocks["type"];
+    examples: ArrayDocs["attributes"][];
+    features: ArrayFeatures["attributes"][];
     documentId: Schema.Attribute.String["type"];
     icon: Schema.Attribute.Enumeration<
       [

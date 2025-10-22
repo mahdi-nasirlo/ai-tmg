@@ -17,4 +17,17 @@ export class ServiceService {
       },
     });
   }
+
+  static async Get(documentId: string) {
+    return ServiceService.api.findOne(documentId, {
+      populate: {
+        tags: true,
+        docs: true,
+        examples: true,
+        features: true,
+        api_endpoints: true,
+        document: true,
+      },
+    });
+  }
 }
