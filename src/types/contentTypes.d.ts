@@ -1,4 +1,5 @@
 import type { Schema, Struct } from "@strapi/strapi";
+import { ArrayTags } from "./components";
 
 export interface AdminApiToken extends Struct.CollectionTypeSchema {
   collectionName: "strapi_api_tokens";
@@ -473,6 +474,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     >["type"];
     publishedAt: Schema.Attribute.DateTime["type"];
     summery: Schema.Attribute.Text["type"];
+    tags: ArrayTags["attributes"][];
     title: Schema.Attribute.String["type"];
     updatedAt: Schema.Attribute.DateTime["type"];
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user">["type"];

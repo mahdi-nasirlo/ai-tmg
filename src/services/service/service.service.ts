@@ -11,6 +11,10 @@ export class ServiceService {
   };
 
   static async GetAll() {
-    return await ServiceService.api.findMany();
+    return await ServiceService.api.findMany({
+      populate: {
+        tags: true,
+      },
+    });
   }
 }

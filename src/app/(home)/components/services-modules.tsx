@@ -394,18 +394,18 @@ export default function ServicesModules() {
                     </p>
 
                     {/* Tags with neon effect */}
-                    {/* {service.tags && (
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {service.tags.map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className={`text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded-full transition-all duration-300 group-hover:bg-gradient-to-r group-hover:${activeCategoryData?.color} group-hover:shadow-lg`}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )} */}
+                    {service.tags && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {service.tags.map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className={`text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded-full transition-all duration-300 group-hover:bg-gradient-to-r group-hover:${activeCategoryData?.color} group-hover:shadow-lg`}
+                          >
+                            {tag.name}
+                          </span>
+                        ))}
+                      </div>
+                    )}
 
                     {/* View More Link with arrow animation */}
                     <div
