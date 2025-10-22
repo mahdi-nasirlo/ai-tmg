@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import QueryClientProvider from "@/constance/providers/query-client-provider";
+
 import { iransansfanum } from "../lib/iransans-font";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body dir="rtl" className={`${iransansfanum.className} antialiased`}>
-        {children}
+        <QueryClientProvider>{children}</QueryClientProvider>
       </body>
     </html>
   );

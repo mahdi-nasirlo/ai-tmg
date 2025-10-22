@@ -25,6 +25,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import Link from "next/link";
+import { useGetAllServices } from "@/constance/services/service/service.hook";
+import { ApiServiceService } from "@/constance/types/contentTypes";
 
 interface Service {
   id: string;
@@ -44,7 +46,30 @@ interface Category {
 }
 
 export default function ServicesModules() {
+  const { data } = useGetAllServices();
+
   const [activeCategory, setActiveCategory] = useState("general");
+
+  const icons = {
+    Workflow,
+    FileEdit,
+    Calendar,
+    Bell,
+    Headphones,
+    ShoppingCart,
+    Users,
+    AlertTriangle,
+    Layers,
+    Mic,
+    ScanFace,
+    Eye,
+    Shield,
+    FileSignature,
+    Languages,
+    Sparkles,
+  } as const;
+
+  type IconName = keyof typeof icons;
 
   const categories: Category[] = [
     {
@@ -271,9 +296,9 @@ export default function ServicesModules() {
   // const activeServices =
   //   services.filter((cat) => cat.categorySlug === activeCategory) || [];
 
-  // const activeCategoryData = categories.find(
-  //   (cat) => cat.id === activeCategory
-  // );
+  const activeCategoryData = categories.find(
+    (cat) => cat.id === activeCategory
+  );
 
   return (
     <section className="py-20 lg:py-32 bg-gradient-to-b from-gray-50 to-white">
@@ -327,46 +352,49 @@ export default function ServicesModules() {
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[].map((service, index) => (
-              <div
-                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden animate-slide-up"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                {/* Neon glow background on hover */}
+            {data?.map((service, index) => {
+              const Icon = icons[service.icon as IconName];
+
+              return (
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${activeCategoryData?.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                ></div>
-
-                {/* Animated border glow */}
-                {/* <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  key={index}
+                  className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden animate-slide-up"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
                   <div
-                    className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${activeCategoryData?.color} blur-xl opacity-60`}
+                    className={`absolute inset-0 bg-gradient-to-br ${activeCategoryData?.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                   ></div>
-                </div> */}
 
-                {/* Content wrapper */}
-                <div className="relative z-10">
-                  {/* Icon Container */}
-                  <div
-                    className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${activeCategoryData?.color} mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg group-hover:shadow-2xl`}
-                  >
-                    <service.icon className="w-8 h-8 text-white" />
-                  </div>
+                  {/* Animated border glow */}
+                  {/* <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div
+                      className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${activeCategoryData?.color} blur-xl opacity-60`}
+                    ></div>
+                  </div> */}
 
-                  {/* Title with neon effect */}
-                  <Link to="/service/test">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3  group-hover:bg-clip-text transition-all duration-300">
-                      {service.title}
-                    </h3>
-                  </Link>
+                  {/* Content wrapper */}
+                  <div className="relative z-10">
+                    {/* Icon Container */}
+                    <div
+                      className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${activeCategoryData?.color} mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg group-hover:shadow-2xl`}
+                    >
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
 
-                  {/* Description */}
-                  <p className="min-h-12 text-gray-600 text-sm leading-relaxed mb-4 group-hover:text-gray-700 transition-colors">
-                    {service.description}
-                  </p>
+                    {/* Title with neon effect */}
+                    <Link href="/service/test">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3  group-hover:bg-clip-text transition-all duration-300">
+                        {service.title}
+                      </h3>
+                    </Link>
 
-                  {/* Tags with neon effect */}
-                  {service.tags && (
+                    {/* Description */}
+                    <p className="min-h-12 text-gray-600 text-sm leading-relaxed mb-4 group-hover:text-gray-700 transition-colors">
+                      {service.summery}
+                    </p>
+
+                    {/* Tags with neon effect */}
+                    {/* {service.tags && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {service.tags.map((tag, tagIndex) => (
                         <span
@@ -377,32 +405,33 @@ export default function ServicesModules() {
                         </span>
                       ))}
                     </div>
-                  )}
+                  )} */}
 
-                  {/* View More Link with arrow animation */}
+                    {/* View More Link with arrow animation */}
+                    <div
+                      className={`flex items-center gap-2 text-sm font-semibold text-gray-500 transition-all duration-300 group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${activeCategoryData?.color}`}
+                    >
+                      <span>مشاهده جزئیات</span>
+                      <ChevronLeft className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Corner accent */}
+
                   <div
-                    className={`flex items-center gap-2 text-sm font-semibold text-gray-500 transition-all duration-300 group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${activeCategoryData?.color}`}
-                  >
-                    <span>مشاهده جزئیات</span>
-                    <ChevronLeft className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+                    className={`absolute top-0 left-0 w-20 h-20 bg-gradient-to-br ${activeCategoryData?.color} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500`}
+                  ></div>
+                  <div
+                    className={`absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl ${activeCategoryData?.color} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500`}
+                  ></div>
+
+                  {/* Scan line effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent translate-y-[-100%] group-hover:translate-y-[100%] transition-transform duration-1000"></div>
                   </div>
                 </div>
-
-                {/* Corner accent */}
-
-                <div
-                  className={`absolute top-0 left-0 w-20 h-20 bg-gradient-to-br ${activeCategoryData?.color} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500`}
-                ></div>
-                <div
-                  className={`absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl ${activeCategoryData?.color} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500`}
-                ></div>
-
-                {/* Scan line effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent translate-y-[-100%] group-hover:translate-y-[100%] transition-transform duration-1000"></div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Bottom CTA */}
