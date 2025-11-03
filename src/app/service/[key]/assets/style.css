@@ -4,3 +4,11 @@ pre {
   direction: ltr;
   @apply bg-black/40 rounded-lg p-4 font-mono text-sm border border-white/10 text-green-400 whitespace-pre-wrap;
 }
+
+ul {
+  @apply space-y-3;
+}
+
+p {
+  @apply !text-pretty;
+}

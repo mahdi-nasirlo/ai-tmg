@@ -275,7 +275,7 @@ engine.on('workflow:completed', (data) => {
             <div className="space-y-8 animate-fade-in">
               {/* Features Grid */}
               <div>
-                <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+                <h2 className="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
                   <Zap className="w-8 h-8 text-yellow-400" />
                   ویژگی‌های کلیدی
                 </h2>
@@ -418,8 +418,8 @@ engine.on('workflow:completed', (data) => {
                         endpoint.method === "GET"
                           ? "bg-green-500/20 text-green-400 border border-green-400/30"
                           : endpoint.method === "POST"
-                          ? "bg-blue-500/20 text-blue-400 border border-blue-400/30"
-                          : "bg-yellow-500/20 text-yellow-400 border border-yellow-400/30"
+                            ? "bg-blue-500/20 text-blue-400 border border-blue-400/30"
+                            : "bg-yellow-500/20 text-yellow-400 border border-yellow-400/30"
                       }`}
                     >
                       {endpoint.method}

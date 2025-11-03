@@ -67,6 +67,7 @@ export default function ServicesModules() {
     FileSignature,
     Languages,
     Sparkles,
+    Car,
   } as const;
 
   type IconName = keyof typeof icons;
@@ -353,7 +354,7 @@ export default function ServicesModules() {
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {activeServices?.map((service, index) => {
-              const Icon = icons[service.icon as IconName];
+              const Icon = icons?.[service.icon as IconName];
 
               return (
                 <div
@@ -378,7 +379,7 @@ export default function ServicesModules() {
                     <div
                       className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${activeCategoryData?.color} mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg group-hover:shadow-2xl`}
                     >
-                      <Icon className="w-8 h-8 text-white" />
+                      {Icon && <Icon className="w-8 h-8 text-white" />}
                     </div>
 
                     {/* Title with neon effect */}
@@ -389,7 +390,7 @@ export default function ServicesModules() {
                     </Link>
 
                     {/* Description */}
-                    <p className="min-h-12 text-gray-600 text-sm leading-relaxed mb-4 group-hover:text-gray-700 transition-colors">
+                    <p className="min-h-12 text-gray-600 text-sm leading-relaxed text-pretty line-clamp-3 mb-4 group-hover:text-gray-700 transition-colors">
                       {service.summery}
                     </p>
 
@@ -408,12 +409,13 @@ export default function ServicesModules() {
                     )}
 
                     {/* View More Link with arrow animation */}
-                    <div
+                    <Link
+                      href={`/service/${service.documentId}`}
                       className={`flex items-center gap-2 text-sm font-semibold text-gray-500 transition-all duration-300 group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${activeCategoryData?.color}`}
                     >
                       <span>مشاهده جزئیات</span>
                       <ChevronLeft className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
-                    </div>
+                    </Link>
                   </div>
 
                   {/* Corner accent */}

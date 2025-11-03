@@ -216,7 +216,38 @@ export default function Client({
           </Link>
 
           <div className="flex items-start justify-between flex-wrap gap-4">
-            <div className="!space-y-6 md:!space-y-8">
+            <div className="flex justify-between w-full">
+              <div className="!space-y-6 md:!space-y-8 grow">
+                <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-3 py-1 rounded-full mb-3">
+                  <span className="text-blue-300 text-sm">
+                    {serviceData.persian_category}
+                  </span>
+                </div>
+                <h1 className="text-2xl md:text-3xl font-bold text-white mb-3 neon-text">
+                  {serviceData.title}
+                </h1>
+              </div>
+              <div className="flex-col gap-2 text-right hidden sm:flex">
+                <div className="text-white/60 text-sm">
+                  نسخه:{" "}
+                  <span className="text-white font-semibold">
+                    {serviceData.version}
+                  </span>
+                </div>
+                <div className="text-white/60 text-sm">
+                  آخرین بروزرسانی:{" "}
+                  <span className="text-white">
+                    {moment(serviceData?.updatedAt, "YYYY-MM-DD").format(
+                      "jYYYY/jMM/jDD"
+                    )}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div dir="rtl" className="text-white/80 text-base text-pretty">
+              <ReactMarkdown>{serviceData.document_content}</ReactMarkdown>
+            </div>
+            {/* <div className="!space-y-6 md:!space-y-8">
               <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-3 py-1 rounded-full mb-3">
                 <span className="text-blue-300 text-sm">
                   {serviceData.persian_category}
@@ -225,27 +256,12 @@ export default function Client({
               <h1 className="text-2xl md:text-3xl font-bold text-white mb-3 neon-text">
                 {serviceData.title}
               </h1>
-              <p className="text-white/80 text-base max-w-2xl">
-                {serviceData.summery}
-              </p>
-            </div>
+              <div className="text-white/80 text-base max-w-4xl text-pretty">
+                <ReactMarkdown>{serviceData.document_content}</ReactMarkdown>
+              </div>
+            </div> */}
 
-            <div className="flex flex-col gap-2 text-right">
-              <div className="text-white/60 text-sm">
-                نسخه:{" "}
-                <span className="text-white font-semibold">
-                  {serviceData.version}
-                </span>
-              </div>
-              <div className="text-white/60 text-sm">
-                آخرین بروزرسانی:{" "}
-                <span className="text-white">
-                  {moment(serviceData?.updatedAt, "YYYY-MM-DD").format(
-                    "jYYYY/jMM/jDD"
-                  )}
-                </span>
-              </div>
-            </div>
+            {/**/}
           </div>
         </div>
       </div>
@@ -267,7 +283,7 @@ export default function Client({
                     tab.id as "overview" | "docs" | "examples" | "api"
                   )
                 }
-                className={`flex items-center gap-2 px-6 py-4 font-semibold transition-all relative group ${
+                className={`flex items-center text-nowrap gap-2 px-6 py-4 font-semibold transition-all relative group ${
                   activeTab === tab.id
                     ? "text-white"
                     : "text-white/60 hover:text-white"
@@ -291,10 +307,34 @@ export default function Client({
             <div className="space-y-8 animate-fade-in">
               {/* Features Grid */}
               <div>
-                <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
-                  <Zap className="w-8 h-8 text-yellow-400" />
-                  ویژگی‌های کلیدی
-                </h2>
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-2xl font-semibold text-white flex items-center gap-3">
+                    <Zap className="w-8 h-8 text-yellow-400" />
+                    ویژگی‌های کلیدی
+                  </h2>
+                  {/* Quick Actions */}
+                  <div className="flex flex-wrap gap-4">
+                    {serviceData.document?.url && (
+                      <button
+                        onClick={() => {
+                          window.location.href =
+                            process.env.NEXT_PUBLIC_API_URL?.replace(
+                              "/api",
+                              ""
+                            ) + serviceData.document?.url;
+                        }}
+                        className="btn-neon group flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-blue-500/50"
+                      >
+                        <Download className="w-5 h-5 group-hover:animate-bounce" />
+                        دانلود مستندات
+                      </button>
+                    )}
+                    <button className="btn-neon group flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-green-500/50">
+                      <Play className="w-5 h-5" />
+                      امتحان آنلاین
+                    </button>
+                  </div>
+                </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {serviceData.features.map((feature, index) => (
                     <div
@@ -305,11 +345,11 @@ export default function Client({
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/10 group-hover:to-pink-500/10 rounded-xl transition-all duration-300"></div>
 
                       <div className="relative">
-                        <CheckCircle className="w-8 h-8 text-green-400 mb-4 group-hover:scale-110 transition-transform" />
-                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400">
+                        <CheckCircle className="size-7 text-green-400 mb-4 group-hover:scale-110 transition-transform" />
+                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400">
                           {feature.name}
                         </h3>
-                        <p className="text-white/70 leading-relaxed">
+                        <p className="text-sm text-white/70 leading-relaxed">
                           {feature.description}
                         </p>
                       </div>
@@ -322,27 +362,6 @@ export default function Client({
                   ))}
                 </div>
               </div>
-
-              {/* Quick Actions */}
-              <div className="flex flex-wrap gap-4">
-                {serviceData.document?.url && (
-                  <button
-                    onClick={() => {
-                      window.location.href =
-                        process.env.NEXT_PUBLIC_API_URL?.replace("/api", "") +
-                        serviceData.document?.url;
-                    }}
-                    className="btn-neon group flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-blue-500/50"
-                  >
-                    <Download className="w-5 h-5 group-hover:animate-bounce" />
-                    دانلود مستندات PDF
-                  </button>
-                )}
-                <button className="btn-neon group flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-green-500/50">
-                  <Play className="w-5 h-5" />
-                  امتحان آنلاین
-                </button>
-              </div>
             </div>
           )}
 
@@ -353,9 +372,10 @@ export default function Client({
                 {serviceData.docs.map((doc, index) => (
                   <div
                     key={index}
-                    className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 text-white/85 space-y-1.5"
+                    dir="rtl"
+                    className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 text-white/85 space-y-5"
                   >
-                    <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                    <h2 className="text-2xl font-semibold text-white mb-4 flex items-center gap-3">
                       {doc.title}
                     </h2>
                     <ReactMarkdown>{doc.content}</ReactMarkdown>
@@ -370,10 +390,10 @@ export default function Client({
               {serviceData.examples.map((example, index) => (
                 <div
                   key={index}
-                  className="group bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-purple-400/50 transition-all animate-slide-up"
+                  className="group bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-purple-400/50 transition-all animate-slide-up text-white/85 space-y-5"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400">
+                  <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400">
                     {example.title}
                   </h3>
                   <ReactMarkdown>{example.content}</ReactMarkdown>
@@ -385,7 +405,7 @@ export default function Client({
           {/* API Tab */}
           {activeTab === "api" && (
             <div className="space-y-4 animate-fade-in">
-              <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+              <h2 className="text-2xl font-semibold text-white mb-6 flex items-center gap-3">
                 <Terminal className="w-8 h-8 text-green-400" />
                 API Endpoints
               </h2>
@@ -409,15 +429,21 @@ export default function Client({
                     </span>
                     <p className="text-white/70">{endpoint.title}</p>
                   </div>
-                  <div className="text-sm text-white/50 space-y-1.5">
-                    <div>پارامترها:</div>{" "}
-                    <ReactMarkdown>{endpoint.params}</ReactMarkdown>
-                  </div>
+                  {endpoint.params && (
+                    <div
+                      className={`text-sm text-white/50 space-y-1.5 ${endpoint.response && "mb-4"}`}
+                    >
+                      <div>پارامترها:</div>{" "}
+                      <ReactMarkdown>{endpoint.params}</ReactMarkdown>
+                    </div>
+                  )}
 
-                  <div className="text-sm text-white/50 space-y-1.5">
-                    <div>پاسخ ها: </div>
-                    <ReactMarkdown>{endpoint.response}</ReactMarkdown>
-                  </div>
+                  {endpoint.response && (
+                    <div className="text-sm text-white/50 space-y-1.5">
+                      <div>پاسخ ها: </div>
+                      <ReactMarkdown>{endpoint.response}</ReactMarkdown>
+                    </div>
+                  )}
 
                   <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                     <div className="absolute inset-0 rounded-xl shadow-[0_0_20px_rgba(34,197,94,0.3)]"></div>

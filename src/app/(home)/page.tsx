@@ -7,6 +7,7 @@ export default async function Home() {
   await queryClient.prefetchQuery({
     queryKey: [ServiceService.Endpoint.GetAll],
     queryFn: ServiceService.GetAll,
+    staleTime: 0,
   });
 
   return (
