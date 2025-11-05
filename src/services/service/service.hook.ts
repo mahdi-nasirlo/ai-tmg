@@ -8,4 +8,11 @@ const useGetAllServices = () =>
     select: (d) => d.data,
   });
 
-export { useGetAllServices };
+const useGetService = (key: string) =>
+  useQuery({
+    queryKey: [ServiceService.Endpoint.Get],
+    queryFn: () => ServiceService.Get(key),
+    select: (d) => d.data,
+  });
+
+export { useGetAllServices, useGetService };

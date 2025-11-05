@@ -8,6 +8,7 @@ export class ServiceService {
 
   static Endpoint = {
     GetAll: "/services",
+    Get: "/service",
   };
 
   static async GetAll() {

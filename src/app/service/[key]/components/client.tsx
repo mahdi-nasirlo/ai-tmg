@@ -1,37 +1,35 @@
 "use client";
 
-import { ApiServiceService } from "@/constance/types/contentTypes";
 import {
   ArrowRight,
   Book,
-  Check,
   CheckCircle,
   Code,
-  Copy,
   Download,
-  ExternalLink,
   FileCode,
-  Lightbulb,
   Play,
   Terminal,
   Zap,
 } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "jalali-moment";
 import ReactMarkdown from "react-markdown";
+import { useParams } from "next/navigation";
+import { useGetService } from "@/constance/services/service/service.hook";
 
 import "../assets/style.css";
 
-export default function Client({
-  data: serviceData,
-}: {
-  data: ApiServiceService["attributes"];
-}) {
+export default function Client() {
   const [activeTab, setActiveTab] = useState<
     "overview" | "docs" | "examples" | "api"
   >("overview");
+
   const [copiedCode, setCopiedCode] = useState<number | null>(null);
+
+  const { key } = useParams<{ key: string }>();
+
+  const { data: serviceData } = useGetService(key);
 
   // Sample service data - این داده‌ها باید از routing یا API دریافت شوند
   //   const serviceData = {
@@ -220,32 +218,33 @@ export default function Client({
               <div className="!space-y-6 md:!space-y-8 grow">
                 <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-3 py-1 rounded-full mb-3">
                   <span className="text-blue-300 text-sm">
-                    {serviceData.persian_category}
+                    {serviceData?.persian_category}
                   </span>
                 </div>
                 <h1 className="text-2xl md:text-3xl font-bold text-white mb-3 neon-text">
-                  {serviceData.title}
+                  {serviceData?.title}
                 </h1>
               </div>
               <div className="flex-col gap-2 text-right hidden sm:flex">
                 <div className="text-white/60 text-sm">
                   نسخه:{" "}
                   <span className="text-white font-semibold">
-                    {serviceData.version}
+                    {serviceData?.version}
                   </span>
                 </div>
                 <div className="text-white/60 text-sm">
                   آخرین بروزرسانی:{" "}
                   <span className="text-white">
-                    {moment(serviceData?.updatedAt, "YYYY-MM-DD").format(
-                      "jYYYY/jMM/jDD"
-                    )}
+                    {serviceData?.updatedAt &&
+                      moment(serviceData?.updatedAt, "YYYY-MM-DD").format(
+                        "jYYYY/jMM/jDD"
+                      )}
                   </span>
                 </div>
               </div>
             </div>
             <div dir="rtl" className="text-white/80 text-base text-pretty">
-              <ReactMarkdown>{serviceData.document_content}</ReactMarkdown>
+              <ReactMarkdown>{serviceData?.document_content}</ReactMarkdown>
             </div>
             {/* <div className="!space-y-6 md:!space-y-8">
               <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-3 py-1 rounded-full mb-3">
@@ -314,7 +313,7 @@ export default function Client({
                   </h2>
                   {/* Quick Actions */}
                   <div className="flex flex-wrap gap-4">
-                    {serviceData.document?.url && (
+                    {serviceData?.document?.url && (
                       <button
                         onClick={() => {
                           window.location.href =
@@ -336,7 +335,7 @@ export default function Client({
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {serviceData.features.map((feature, index) => (
+                  {serviceData?.features.map((feature, index) => (
                     <div
                       key={index}
                       className="group relative bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-400/50 transition-all duration-300 card-hover animate-slide-up"
@@ -367,7 +366,7 @@ export default function Client({
 
           {/* Documentation Tab */}
           {activeTab === "docs" &&
-            (serviceData.document_content || serviceData.docs.length) && (
+            (serviceData?.document_content || serviceData?.docs.length) && (
               <div className="space-y-8 animate-fade-in">
                 {serviceData.docs.map((doc, index) => (
                   <div
@@ -387,7 +386,7 @@ export default function Client({
           {/* Examples Tab */}
           {activeTab === "examples" && (
             <div className="space-y-6 animate-fade-in">
-              {serviceData.examples.map((example, index) => (
+              {serviceData?.examples.map((example, index) => (
                 <div
                   key={index}
                   className="group bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-purple-400/50 transition-all animate-slide-up text-white/85 space-y-5"
@@ -409,7 +408,7 @@ export default function Client({
                 <Terminal className="w-8 h-8 text-green-400" />
                 API Endpoints
               </h2>
-              {serviceData.api_endpoints.map((endpoint, index) => (
+              {serviceData?.api_endpoints.map((endpoint, index) => (
                 <div
                   key={index}
                   className="group bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-green-400/50 transition-all card-hover animate-slide-up"
@@ -421,8 +420,8 @@ export default function Client({
                         (endpoint.method as string) === "GET"
                           ? "bg-green-500/20 text-green-400 border border-green-400/30"
                           : (endpoint.method as string) === "POST"
-                            ? "bg-blue-500/20 text-blue-400 border border-blue-400/30"
-                            : "bg-yellow-500/20 text-yellow-400 border border-yellow-400/30"
+                          ? "bg-blue-500/20 text-blue-400 border border-blue-400/30"
+                          : "bg-yellow-500/20 text-yellow-400 border border-yellow-400/30"
                       }`}
                     >
                       {endpoint.method}
@@ -431,7 +430,9 @@ export default function Client({
                   </div>
                   {endpoint.params && (
                     <div
-                      className={`text-sm text-white/50 space-y-1.5 ${endpoint.response && "mb-4"}`}
+                      className={`text-sm text-white/50 space-y-1.5 ${
+                        endpoint.response && "mb-4"
+                      }`}
                     >
                       <div>پارامترها:</div>{" "}
                       <ReactMarkdown>{endpoint.params}</ReactMarkdown>
