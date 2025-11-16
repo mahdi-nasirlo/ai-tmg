@@ -458,6 +458,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     examples: ArrayDocs["attributes"][];
     features: ArrayFeatures["attributes"][];
     documentId: Schema.Attribute.String["type"];
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     icon: Schema.Attribute.Enumeration<
       [
         "Workflow",
@@ -477,7 +478,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
         "Shield",
         "FileSignature",
         "Languages",
-        "Sparkles",
+        "Sparkles"
       ]
     >["default"];
     locale: Schema.Attribute.String["type"];

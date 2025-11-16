@@ -26,7 +26,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useGetAllServices } from "@/constance/services/service/service.hook";
-import { ApiServiceService } from "@/constance/types/contentTypes";
 
 interface Service {
   id: string;
@@ -42,7 +41,6 @@ interface Category {
   title: string;
   icon: any;
   color: string;
-  services: Service[];
 }
 
 export default function ServicesModules() {
@@ -78,219 +76,24 @@ export default function ServicesModules() {
       title: "ماژول‌های عمومی",
       icon: Layers,
       color: "from-blue-500 to-cyan-500",
-      services: [
-        {
-          id: "workflow",
-          title: "ماژول ورک‌فلو",
-          icon: Workflow,
-          description:
-            "مدیریت و اتوماسیون فرآیندهای سازمانی با قابلیت طراحی گردش کار پیشرفته",
-          tags: ["اتوماسیون", "مدیریت فرآیند"],
-          link: "#/modules/workflow",
-        },
-        {
-          id: "form-builder",
-          title: "فرم‌ساز پیشرفته",
-          icon: FileEdit,
-          description:
-            "ساخت فرم‌های دینامیک با امکان اعتبارسنجی و ارسال خودکار",
-          tags: ["فرم", "داینامیک"],
-          link: "#/modules/form-builder",
-        },
-        {
-          id: "calendar",
-          title: "ماژول تقویم",
-          icon: Calendar,
-          description:
-            "مدیریت رویدادها و برنامه‌ریزی با پشتیبانی از تقویم شمسی و میلادی",
-          tags: ["زمان‌بندی", "رویداد"],
-          link: "#/modules/calendar",
-        },
-        {
-          id: "map",
-          title: "ماژول نقشه",
-          icon: Map,
-          description:
-            "نمایش و مدیریت اطلاعات مکانی با قابلیت مسیریابی و جستجوی موقعیت",
-          tags: ["مکان", "جغرافیا"],
-          link: "#/modules/map",
-        },
-        {
-          id: "notification",
-          title: "مدیریت اعلان و نوتیفیکیشن",
-          icon: Bell,
-          description: "سیستم جامع ارسال و مدیریت اعلان‌ها در کانال‌های مختلف",
-          tags: ["اعلان", "پوش"],
-          link: "#/modules/notification",
-        },
-      ],
     },
     {
       id: "assistant",
       title: "سرویس‌های دستیار هوشمند",
       icon: MessageSquare,
       color: "from-green-500 to-emerald-500",
-      services: [
-        {
-          id: "chatbot-samen",
-          title: "چت‌بات پشتیبانی ثامن",
-          icon: Headphones,
-          description:
-            "دستیار هوشمند اختصاصی برای پاسخگویی به سوالات سامانه ثامن",
-          tags: ["چت‌بات", "ثامن"],
-          link: "#/services/chatbot-samen",
-        },
-        {
-          id: "chatbot-trade",
-          title: "پشتیبانی سامانه تجارت",
-          icon: ShoppingCart,
-          description: "پشتیبانی هوشمند برای فرآیندهای تجاری و معاملات",
-          tags: ["تجارت", "معاملات"],
-          link: "#/services/chatbot-trade",
-        },
-        {
-          id: "chatbot-hr",
-          title: "چت‌بات فرایند جذب و استخدام",
-          icon: Users,
-          description:
-            "دستیار هوشمند برای مدیریت فرآیند استخدام و پاسخگویی به متقاضیان",
-          tags: ["استخدام", "منابع انسانی"],
-          link: "#/services/chatbot-hr",
-        },
-        {
-          id: "fraud-detection",
-          title: "پشتیبانی تراکنش‌های مشکوک",
-          icon: AlertTriangle,
-          description: "شناسایی و مدیریت تراکنش‌های مشکوک با هوش مصنوعی",
-          tags: ["امنیت", "تشخیص کلاهبرداری"],
-          link: "#/services/fraud-detection",
-        },
-        {
-          id: "cargo-support",
-          title: "پشتیبانی درگاه ملی حمل بار",
-          icon: Layers,
-          description:
-            "دستیار هوشمند برای پاسخگویی به سوالات درگاه ملی حمل بار",
-          tags: ["حمل و نقل", "لجستیک"],
-          link: "#/services/cargo-support",
-        },
-      ],
     },
     {
       id: "ai",
       title: "سرویس‌های هوش مصنوعی",
       icon: Brain,
       color: "from-purple-500 to-pink-500",
-      services: [
-        {
-          id: "speech-to-text",
-          title: "تبدیل صوت به متن",
-          icon: Mic,
-          description:
-            "تبدیل گفتار به متن با دقت بالا و پشتیبانی از زبان فارسی",
-          tags: ["صوت", "پردازش گفتار"],
-          link: "#/services/speech-to-text",
-        },
-        {
-          id: "face-recognition",
-          title: "تشخیص چهره",
-          icon: ScanFace,
-          description:
-            "شناسایی و تطبیق چهره با دقت بالا برای کنترل دسترسی و امنیت",
-          tags: ["بیومتریک", "امنیت"],
-          link: "#/services/face-recognition",
-        },
-        {
-          id: "plate-recognition",
-          title: "تشخیص پلاک خودرو",
-          icon: Car,
-          description: "شناسایی خودکار پلاک خودروها با دقت بالا",
-          tags: ["پلاک", "خودرو"],
-          link: "#/services/plate-recognition",
-        },
-        {
-          id: "vehicle-detection",
-          title: "تشخیص ماشین و مدل",
-          icon: Car,
-          description: "شناسایی نوع، برند و مدل خودرو از روی تصویر",
-          tags: ["خودرو", "شناسایی"],
-          link: "#/services/vehicle-detection",
-        },
-        {
-          id: "object-detection",
-          title: "تشخیص اشیاء",
-          icon: Eye,
-          description: "شناسایی و دسته‌بندی اشیاء مختلف در تصاویر و ویدیوها",
-          tags: ["بینایی ماشین", "شناسایی"],
-          link: "#/services/object-detection",
-        },
-        {
-          id: "weapon-detection",
-          title: "تشخیص اسلحه",
-          icon: Shield,
-          description: "شناسایی خودکار اسلحه و ابزار خطرناک برای افزایش امنیت",
-          tags: ["امنیت", "هشدار"],
-          link: "#/services/weapon-detection",
-        },
-        {
-          id: "signature-recognition",
-          title: "تشخیص امضا",
-          icon: FileSignature,
-          description: "احراز هویت و تطبیق امضا با استفاده از یادگیری عمیق",
-          tags: ["امضا", "احراز هویت"],
-          link: "#/services/signature-recognition",
-        },
-      ],
     },
     {
       id: "language",
       title: "سرویس‌های زبانی",
       icon: Languages,
       color: "from-orange-500 to-red-500",
-      services: [
-        {
-          id: "deepseek",
-          title: "DeepSeek",
-          icon: Sparkles,
-          description:
-            "مدل زبانی پیشرفته برای پردازش و تولید متن با کیفیت بالا",
-          tags: ["LLM", "تولید متن"],
-          link: "#/services/deepseek",
-        },
-        {
-          id: "qwen",
-          title: "Qwen",
-          icon: Sparkles,
-          description: "مدل زبانی چندزبانه با قابلیت‌های پیشرفته درک متن",
-          tags: ["LLM", "چندزبانه"],
-          link: "#/services/qwen",
-        },
-        {
-          id: "llama",
-          title: "LLaMA",
-          icon: Sparkles,
-          description: "مدل زبانی قدرتمند متن‌باز برای کاربردهای متنوع",
-          tags: ["LLM", "متن‌باز"],
-          link: "#/services/llama",
-        },
-        {
-          id: "dorna",
-          title: "Dorna",
-          icon: Sparkles,
-          description:
-            "مدل زبانی فارسی بومی با درک عمیق از زبان و فرهنگ ایرانی",
-          tags: ["LLM", "فارسی"],
-          link: "#/services/dorna",
-        },
-        {
-          id: "gpt",
-          title: "GPT",
-          icon: Sparkles,
-          description: "مدل زبانی پیشرفته GPT برای گفتگوی طبیعی و هوشمند",
-          tags: ["LLM", "گفتگو"],
-          link: "#/services/gpt",
-        },
-      ],
     },
   ];
 
@@ -362,6 +165,24 @@ export default function ServicesModules() {
                   className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden animate-slide-up"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
+                  <div className="absolute top-4 left-4 z-20">
+                    {service.isActive ? (
+                      <div className="flex items-center gap-2 bg-green-100 px-3 py-1 rounded-full">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-xs font-semibold text-green-700">
+                          فعال
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2 bg-red-100 px-3 py-1 rounded-full">
+                        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                        <span className="text-xs font-semibold text-red-700">
+                          غیرفعال
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${activeCategoryData?.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                   ></div>
