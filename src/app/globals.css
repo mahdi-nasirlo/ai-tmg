@@ -25,6 +25,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+img {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 @layer utilities {
   .animate-fade-in {
     animation: fadeIn 1s ease-in forwards;
